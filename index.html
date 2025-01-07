@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdullahi's Portfolio</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Root Styles */
+        :root {
+            --main-bg-color: #f4f4f9;
+            --primary-color: #1a1a1a;
+            --secondary-color: #555;
+            --accent-color: #6c63ff;
+            --light-gray: #e0e0e0;
+            --dark-gray: #333;
+            --button-hover-color: #5a52e0;
+            --font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--main-bg-color);
+            color: var(--primary-color);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: #fff;
+            border-bottom: 1px solid var(--light-gray);
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 22px;
+            color: var(--accent-color);
+        }
+
+        nav a {
+            margin-left: 20px;
+            font-size: 16px;
+            color: var(--secondary-color);
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Full-Page Sections */
+        section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5%;
+            text-align: center;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--accent-color);
+            color: #fff;
+            padding: 50px 0;
+        }
+
+        .hero img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .hero img:hover {
+            transform: scale(1.1);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero button {
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #fff;
+            color: var(--accent-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .hero button:hover {
+            background-color: var(--button-hover-color);
+            transform: translateY(-3px);
+        }
+
+        /* Portfolio Section */
+        #portfolio {
+            background-color: #fff;
+            padding: 50px 0;
+        }
+
+        #portfolio h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .projects {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .project-card {
+            width: 300px;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--light-gray);
+            padding: 50px 0;
+        }
+
+        #about h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        #about p {
+            max-width: 600px;
+            color: var(--secondary-color);
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: #fff;
+            padding: 50px 0;
+        }
+
+        #contact h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        #contact p {
+            font-size: 16px;
+            color: var(--secondary-color);
+        }
+
+        .contact-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: var(--accent-color);
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .contact-btn:hover {
+            background-color: var(--button-hover-color);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 20px 5%;
+            text-align: center;
+            background-color: #fff;
+            border-top: 1px solid var(--light-gray);
+            color: var(--secondary-color);
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            color: var(--secondary-color);
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .projects {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero button {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">ABDULLAHI</div>
+        <nav>
+            <a href="#hero">Home</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <img src="./abdala.png" alt="Abdullahi's profile picture">
+        <h1>I'm Abdullahi, Frontend Developer</h1>
+        <button>HIRE ME</button>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <h2>My Projects</h2>
+        <div class="projects">
+            <div class="project-card">
+                <img src="./project1.png" alt="Curuba Website">
+               <button><h3><a href="https://abdulkany.github.io/Curubahotel/
+                ">Project 1</a></h3></button> 
+                <p>Curuba Hotel website</p>
+            </div>
+            <div class="project-card">
+                <img src="./Portfolio website.png" alt="portfolio website">
+                <h3>Project 2</h3>
+                <p>A well structured portfolio</p>
+            </div>
+            
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hello! I'm Abdullahi, a passionate frontend developer with a knack for creating beautiful and functional websites. I enjoy working with the latest technologies to bring ideas to life.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>I'm open to collaborating on projects and opportunities. Feel free to get in touch!</p>
+        <a href="mailto:abdullahi@example.com" class="contact-btn">Email Me</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://twitter.com/abdullahi">Twitter</a>
+            <a href="https://linkedin.com/in/abdullahi">LinkedIn</a>
+            <a href="https://github.com/abdullahi">GitHub</a>
+        </div>
+        &copy; 2024 Abdullahi. All rights reserved.
+    </footer>
+
+</body>
+</html>
