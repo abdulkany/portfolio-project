@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abdullahi's Portfolio - Frontend Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Basic Reset */
@@ -15,14 +15,18 @@
         }
 
         :root {
-            --main-bg-color: #f8f8fc; /* Softer light background */
-            --section-bg-color: #ffffff; /* White for main sections */
-            --primary-text-color: #333333; /* Darker primary text */
-            --secondary-text-color: #666666; /* Slightly lighter secondary text */
-            --accent-color: #5b52e0; /* A slightly deeper purple */
-            --accent-light: #7b73f0; /* Lighter shade for hover */
-            --font-heading: 'Montserrat', sans-serif;
-            --font-body: 'Lato', sans-serif;
+            --main-bg-color: #f8faff; /* Very light blueish-white */
+            --section-bg-color: #ffffff; /* Pure white for main sections */
+            --primary-text-color: #2c3e50; /* Dark slate grey for primary text */
+            --secondary-text-color: #7f8c8d; /* Muted grey for secondary text */
+            --accent-color: #4CAF50; /* A vibrant green (can be changed to purple if preferred, e.g., #7e57c2) */
+            --accent-dark: #388E3C; /* Darker green for hover */
+            --shadow-light: rgba(0, 0, 0, 0.08);
+            --shadow-strong: rgba(0, 0, 0, 0.15);
+            --border-radius: 8px;
+
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Inter', sans-serif;
         }
 
         body {
@@ -31,6 +35,7 @@
             color: var(--primary-text-color);
             scroll-behavior: smooth;
             line-height: 1.7; /* Improved readability */
+            font-size: 16px;
         }
 
         a {
@@ -38,11 +43,11 @@
             color: inherit;
         }
 
-        /* Utility Classes */
+        /* Utility Class */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 25px; /* More generous horizontal padding */
         }
 
         /* Header */
@@ -51,9 +56,9 @@
             top: 0;
             width: 100%;
             background-color: var(--section-bg-color);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+            box-shadow: 0 4px 10px var(--shadow-light); /* Clearer shadow */
             z-index: 100;
-            padding: 15px 5%; /* Slightly less padding */
+            padding: 18px 5%; /* Slightly more padding */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -61,16 +66,22 @@
 
         .logo {
             font-family: var(--font-heading);
-            font-size: 28px;
+            font-size: 30px; /* Larger logo */
             font-weight: 700;
             color: var(--accent-color);
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--accent-dark);
         }
 
         nav a {
-            margin-left: 25px;
+            margin-left: 30px; /* More space between links */
             font-size: 17px;
+            font-weight: 500;
             color: var(--secondary-text-color);
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.3s ease;
             position: relative;
         }
 
@@ -78,9 +89,9 @@
             content: '';
             position: absolute;
             left: 0;
-            bottom: -5px;
+            bottom: -8px; /* Positioned slightly lower */
             width: 0;
-            height: 2px;
+            height: 2.5px; /* Thicker underline */
             background-color: var(--accent-color);
             transition: width 0.3s ease;
         }
@@ -91,6 +102,7 @@
 
         nav a:hover {
             color: var(--accent-color);
+            transform: translateY(-2px); /* Subtle lift on hover */
         }
 
         /* Hero Section */
@@ -100,86 +112,101 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(91, 82, 224, 0.9), rgba(123, 115, 240, 0.9)), url('https://via.placeholder.com/1920x1080/5b52e0/ffffff?text=Background+Image') no-repeat center center/cover; /* Added a subtle background image overlay */
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.9), rgba(129, 212, 250, 0.7)), /* Green to light blue gradient */
+                        url('https://via.placeholder.com/1920x1080/4CAF50/ffffff?text=Developer+Background') no-repeat center center/cover;
             color: #fff;
             text-align: center;
             padding: 0 20px;
             position: relative;
+            overflow: hidden; /* Ensure content stays within bounds */
         }
 
-        #hero::before {
+        #hero::before { /* Subtle pattern or overlay for texture */
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.2); /* Darker overlay for text readability */
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.8;
             z-index: 0;
         }
 
-        #hero > * {
+        #hero > * { /* Ensure content is above the overlay */
             position: relative;
             z-index: 1;
         }
 
         #hero img {
-            width: 180px; /* Slightly larger image */
-            height: 180px;
+            width: 200px; /* Larger profile image */
+            height: 200px;
             border-radius: 50%;
-            border: 5px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
-            margin-bottom: 25px;
+            border: 6px solid rgba(255, 255, 255, 0.4); /* Thicker, softer border */
+            margin-bottom: 30px;
             object-fit: cover;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            transition: transform 0.4s ease;
+        }
+
+        #hero img:hover {
+            transform: scale(1.05); /* Slight zoom on hover */
         }
 
         #hero h1 {
             font-family: var(--font-heading);
-            font-size: 52px; /* Larger heading */
+            font-size: 60px; /* More impactful heading */
             margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); /* Stronger text shadow */
+            letter-spacing: -1px;
         }
 
         #hero p {
-            font-size: 20px;
-            max-width: 600px;
-            margin-bottom: 30px; /* More space before button */
+            font-size: 22px; /* Larger introductory text */
+            max-width: 700px;
+            margin-bottom: 40px;
+            font-weight: 300;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
         }
 
         .primary-button {
             display: inline-block;
-            padding: 14px 30px;
-            background-color: #fff;
-            color: var(--accent-color);
-            border: none;
-            border-radius: 8px; /* Softer border-radius */
-            font-size: 18px;
-            font-weight: 700;
+            padding: 16px 35px; /* More padding for a bolder button */
+            background-color: var(--accent-color); /* Main accent color */
+            color: #fff;
+            border: 2px solid var(--accent-color); /* Border matches background */
+            border-radius: var(--border-radius);
+            font-size: 19px;
+            font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s, box-shadow 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s, box-shadow 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 6px 15px var(--shadow-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .primary-button:hover {
-            background-color: var(--accent-light);
-            color: #fff;
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            background-color: var(--accent-dark);
+            border-color: var(--accent-dark);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px var(--shadow-strong);
         }
 
         /* Sections */
         section {
-            padding: 80px 0; /* More vertical padding */
+            padding: 100px 0; /* Generous vertical padding */
             text-align: center;
         }
 
         section h2 {
             font-family: var(--font-heading);
-            font-size: 38px;
-            margin-bottom: 40px;
+            font-size: 44px; /* Larger section titles */
+            margin-bottom: 50px; /* More space below title */
             color: var(--primary-text-color);
             position: relative;
             display: inline-block;
+            letter-spacing: -0.5px;
         }
 
         section h2::after {
@@ -187,65 +214,71 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            bottom: -10px;
-            width: 60px;
-            height: 4px;
+            bottom: -15px; /* Lower position for underline */
+            width: 80px; /* Longer underline */
+            height: 5px; /* Thicker underline */
             background-color: var(--accent-color);
-            border-radius: 2px;
+            border-radius: 3px;
         }
 
         #portfolio {
             background-color: var(--section-bg-color);
+            padding-bottom: 100px; /* Ensure footer isn't too close */
         }
 
         .projects {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px; /* Increased gap */
-            padding: 0 20px; /* Ensure padding for smaller screens */
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Larger minimum size */
+            gap: 35px; /* More gap */
         }
 
         .project-card {
             background-color: var(--main-bg-color);
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); /* Stronger shadow */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: left; /* Align text left within card */
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 8px 20px var(--shadow-light); /* More pronounced shadow */
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
+            text-align: left;
+            border: 1px solid #e0e0e0; /* Subtle border */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-12px); /* Greater lift on hover */
+            box-shadow: 0 18px 35px var(--shadow-strong); /* Stronger shadow on hover */
+            background-color: #f0f4f7; /* Slight background change on hover */
         }
 
         .project-card img {
             width: 100%;
-            height: 200px; /* Fixed height for consistent card size */
-            object-fit: cover; /* Ensures images fill the space without distortion */
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border: 1px solid #eee;
+            height: 220px; /* Fixed height for consistent cards */
+            object-fit: cover;
+            border-radius: var(--border-radius) var(--border-radius) 0 0; /* Rounded top corners only */
+            margin-bottom: 25px;
+            border-bottom: 1px solid #ddd;
         }
 
         .project-card h3 {
             font-family: var(--font-heading);
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: var(--accent-color);
+            font-size: 26px; /* Larger project title */
+            margin-bottom: 12px;
+            color: var(--primary-text-color);
         }
 
         .project-card h3 a {
+            color: var(--accent-color);
             transition: color 0.3s ease;
         }
 
         .project-card h3 a:hover {
-            color: var(--accent-light);
+            color: var(--accent-dark);
             text-decoration: underline;
         }
 
         .project-card p {
-            font-size: 16px;
+            font-size: 16.5px;
             color: var(--secondary-text-color);
             line-height: 1.6;
         }
@@ -255,10 +288,12 @@
         }
 
         #about p {
-            font-size: 18px;
-            max-width: 800px;
+            font-size: 18.5px; /* Larger about text */
+            max-width: 900px;
             margin: 0 auto;
             color: var(--primary-text-color);
+            line-height: 1.8;
+            font-weight: 300;
         }
 
         #contact {
@@ -266,65 +301,88 @@
         }
 
         #contact p {
-            font-size: 18px;
-            margin-bottom: 30px;
+            font-size: 18.5px;
+            margin-bottom: 40px; /* More space before buttons */
             color: var(--primary-text-color);
         }
 
         .contact-links {
             display: flex;
             justify-content: center;
-            gap: 20px; /* Space between buttons */
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            gap: 25px; /* More space between buttons */
+            flex-wrap: wrap;
         }
 
         .contact-btn, .whatsapp-btn {
-            display: inline-flex; /* Use flex for icon and text alignment */
+            display: inline-flex;
             align-items: center;
-            gap: 8px; /* Space between icon and text */
-            padding: 14px 28px;
+            gap: 10px; /* More space between icon and text */
+            padding: 16px 30px;
             color: #fff;
             background-color: var(--accent-color);
-            border-radius: 8px;
-            font-size: 17px;
+            border-radius: var(--border-radius);
+            font-size: 18px;
             font-weight: 600;
             transition: background-color 0.3s ease, transform 0.3s, box-shadow 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 15px var(--shadow-light);
         }
 
         .contact-btn:hover, .whatsapp-btn:hover {
-            background-color: var(--accent-light);
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            background-color: var(--accent-dark);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px var(--shadow-strong);
+        }
+
+        .contact-btn i, .whatsapp-btn i {
+            font-size: 20px; /* Larger icons */
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 30px;
-            background-color: var(--primary-text-color); /* Darker footer */
-            color: #f8f8fc; /* Light text on dark background */
-            border-top: 1px solid #444;
+            padding: 40px; /* More padding */
+            background-color: #2c3e50; /* Darker, professional footer */
+            color: #ecf0f1; /* Light grey text */
+            border-top: 1px solid #34495e;
             font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .social-links {
+            margin-bottom: 25px; /* More space */
         }
 
         .social-links a {
-            margin: 0 15px;
-            font-size: 24px; /* Larger social icons */
-            color: #f8f8fc;
+            margin: 0 18px; /* More space between icons */
+            font-size: 28px; /* Larger social icons */
+            color: #ecf0f1;
             transition: color 0.3s ease, transform 0.3s ease;
         }
 
         .social-links a:hover {
-            color: var(--accent-light);
-            transform: translateY(-3px);
-        }
-
-        .social-links {
-            margin-bottom: 20px;
+            color: var(--accent-color);
+            transform: translateY(-4px) scale(1.1); /* Lift and slight scale */
         }
 
         /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            #hero h1 {
+                font-size: 50px;
+            }
+
+            #hero p {
+                font-size: 20px;
+            }
+
+            section h2 {
+                font-size: 38px;
+            }
+
+            .projects {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -336,28 +394,47 @@
             }
 
             nav a {
-                margin: 0 10px;
-                font-size: 15px;
+                margin: 0 12px;
+                font-size: 16px;
             }
 
             #hero h1 {
-                font-size: 42px;
+                font-size: 40px;
             }
 
             #hero p {
                 font-size: 18px;
+                margin-bottom: 30px;
+            }
+
+            .primary-button {
+                padding: 14px 28px;
+                font-size: 17px;
             }
 
             section {
-                padding: 60px 0;
+                padding: 70px 0;
             }
 
             section h2 {
                 font-size: 32px;
+                margin-bottom: 40px;
             }
 
-            .projects {
-                grid-template-columns: 1fr; /* Stack projects on small screens */
+            .project-card {
+                padding: 25px;
+            }
+
+            .project-card img {
+                height: 180px;
+            }
+
+            .project-card h3 {
+                font-size: 24px;
+            }
+
+            #about p, #contact p {
+                font-size: 17px;
             }
 
             .contact-links {
@@ -366,32 +443,59 @@
             }
 
             .contact-btn, .whatsapp-btn {
-                width: 80%; /* Make buttons wider on small screens */
+                width: 85%; /* Make buttons wider on small screens */
                 margin: 0 auto;
+                padding: 14px 25px;
+                font-size: 16px;
+            }
+            .contact-btn i, .whatsapp-btn i {
+                font-size: 18px;
+            }
+
+            .social-links a {
+                font-size: 24px;
+                margin: 0 12px;
             }
         }
 
         @media (max-width: 480px) {
+            .logo {
+                font-size: 26px;
+            }
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px 15px;
+            }
+            nav a {
+                margin: 0;
+            }
+
+            #hero img {
+                width: 150px;
+                height: 150px;
+            }
+
             #hero h1 {
-                font-size: 34px;
+                font-size: 32px;
             }
 
             #hero p {
                 font-size: 16px;
-            }
-
-            #hero img {
-                width: 140px;
-                height: 140px;
-            }
-
-            .primary-button {
-                padding: 12px 25px;
-                font-size: 16px;
+                margin-bottom: 25px;
             }
 
             section h2 {
                 font-size: 28px;
+            }
+
+            .project-card h3 {
+                font-size: 22px;
+            }
+
+            .project-card p {
+                font-size: 15.5px;
             }
         }
     </style>
@@ -409,7 +513,7 @@
     </header>
 
     <section id="hero">
-        <img src="https://via.placeholder.com/180/ADD8E6/000000?text=Abdullahi" alt="Abdullahi's Profile Picture">
+        <img src="./abdala.png" alt="Abdullahi's Profile Picture">
         <h1>Hi, I'm Abdullahi</h1>
         <p>A passionate **Frontend Developer** dedicated to building beautiful, functional, and user-friendly web experiences.</p>
         <a href="#contact" class="primary-button">HIRE ME</a>
@@ -420,19 +524,24 @@
             <h2>My Portfolio</h2>
             <div class="projects">
                 <div class="project-card">
-                    <img src="https://via.placeholder.com/400x200/ADD8E6/000000?text=Curuba+Hotel" alt="Curuba Hotel Project">
+                    <img src="./project1.png" alt="Curuba Hotel Project">
                     <h3><a href="https://abdulkany.github.io/Curubahotel/" target="_blank">Curuba Hotel Website</a></h3>
                     <p>A fully responsive website designed for a luxury hotel, featuring elegant design and seamless booking integration. Built with HTML, CSS, and JavaScript.</p>
                 </div>
                 <div class="project-card">
-                    <img src="https://via.placeholder.com/400x200/ADD8E6/000000?text=Personal+Portfolio" alt="Portfolio Website Project">
-                    <h3>Personal Portfolio Site</h3>
+                    <img src="./Portfolio website.png" alt="Portfolio Website Project">
+                    <h3><a href="#" target="_blank">Personal Portfolio Site</a></h3>
                     <p>A modern and interactive personal portfolio to showcase my skills, projects, and professional journey. Emphasizes clean design and user experience.</p>
                 </div>
                 <div class="project-card">
-                    <img src="https://via.placeholder.com/400x200/ADD8E6/000000?text=Project+3" alt="Project 3">
-                    <h3><a href="#" target="_blank">Project Title 3</a></h3>
-                    <p>Brief description of your third project, highlighting technologies used and your role in its development.</p>
+                    <img src="https://via.placeholder.com/400x220/dceefc/333333?text=Project+3" alt="Placeholder Project Image">
+                    <h3><a href="#" target="_blank">E-commerce Product Page</a></h3>
+                    <p>Designed and developed a responsive product detail page for an e-commerce platform, focusing on user engagement and clear product presentation.</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x220/e0f2f7/333333?text=Project+4" alt="Placeholder Project Image">
+                    <h3><a href="#" target="_blank">Interactive Landing Page</a></h3>
+                    <p>Created an engaging landing page with dynamic elements and smooth animations, optimized for lead generation and user conversion.</p>
                 </div>
             </div>
         </div>
@@ -442,9 +551,11 @@
         <div class="container">
             <h2>About Me</h2>
             <p>
-                I am a dedicated and enthusiastic Frontend Developer with a keen eye for detail and a passion for crafting engaging user interfaces. My journey in web development began with a fascination for how design meets functionality on the internet. I thrive on translating creative visions into pixel-perfect, responsive, and accessible websites.
+                I am a dedicated and enthusiastic **Frontend Developer** with a keen eye for detail and a passion for crafting engaging user interfaces. My journey in web development began with a fascination for how design meets functionality on the internet. I thrive on translating creative visions into pixel-perfect, responsive, and accessible websites that provide exceptional user experiences.
                 <br><br>
-                With a solid foundation in **HTML5, CSS3, and JavaScript**, I enjoy tackling challenges and continuously learning new technologies to stay at the forefront of web development trends. I believe in writing clean, efficient, and maintainable code, and I'm always looking for opportunities to collaborate on innovative projects that make a real impact. Let's build something amazing together!
+                With a solid foundation in **HTML5, CSS3, and modern JavaScript (ES6+)**, I am proficient in building dynamic web applications. I'm always eager to learn and adapt to new frameworks and libraries, constantly expanding my toolkit to keep up with the ever-evolving web landscape. I believe in writing clean, efficient, and maintainable code, and I'm always looking for opportunities to collaborate on innovative projects that make a real impact.
+                <br><br>
+                When I'm not coding, you can find me exploring new design trends, contributing to open-source projects, or diving into a good book. Let's connect and create something amazing together!
             </p>
         </div>
     </section>
