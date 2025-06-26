@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdullahi's Portfolio</title>
+    <title>Abdullahi's Portfolio - Frontend Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Basic Reset */
         * {
@@ -13,20 +15,22 @@
         }
 
         :root {
-            --main-bg-color: #f4f4f9;
-            --primary-color: #1a1a1a;
-            --secondary-color: #555;
-            --accent-color: #6c63ff;
-            --button-hover-color: #5a52e0;
-            --font-family: 'Arial', sans-serif;
+            --main-bg-color: #f8f8fc; /* Softer light background */
+            --section-bg-color: #ffffff; /* White for main sections */
+            --primary-text-color: #333333; /* Darker primary text */
+            --secondary-text-color: #666666; /* Slightly lighter secondary text */
+            --accent-color: #5b52e0; /* A slightly deeper purple */
+            --accent-light: #7b73f0; /* Lighter shade for hover */
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Lato', sans-serif;
         }
 
         body {
-            font-family: var(--font-family);
+            font-family: var(--font-body);
             background-color: var(--main-bg-color);
-            color: var(--primary-color);
+            color: var(--primary-text-color);
             scroll-behavior: smooth;
-            line-height: 1.6;
+            line-height: 1.7; /* Improved readability */
         }
 
         a {
@@ -34,31 +38,55 @@
             color: inherit;
         }
 
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
         /* Header */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 20px 5%;
+            background-color: var(--section-bg-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+            z-index: 100;
+            padding: 15px 5%; /* Slightly less padding */
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #fff;
-            border-bottom: 1px solid #ddd;
-            z-index: 100;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: bold;
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
             color: var(--accent-color);
         }
 
         nav a {
-            margin-left: 20px;
-            font-size: 16px;
-            color: var(--secondary-color);
+            margin-left: 25px;
+            font-size: 17px;
+            color: var(--secondary-text-color);
             transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
         }
 
         nav a:hover {
@@ -72,112 +100,299 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--accent-color), var(--main-bg-color));
+            background: linear-gradient(135deg, rgba(91, 82, 224, 0.9), rgba(123, 115, 240, 0.9)), url('https://via.placeholder.com/1920x1080/5b52e0/ffffff?text=Background+Image') no-repeat center center/cover; /* Added a subtle background image overlay */
             color: #fff;
             text-align: center;
             padding: 0 20px;
+            position: relative;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2); /* Darker overlay for text readability */
+            z-index: 0;
+        }
+
+        #hero > * {
+            position: relative;
+            z-index: 1;
         }
 
         #hero img {
-            width: 150px;
-            height: 150px;
+            width: 180px; /* Slightly larger image */
+            height: 180px;
             border-radius: 50%;
-            margin-bottom: 20px;
+            border: 5px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
+            margin-bottom: 25px;
+            object-fit: cover;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         #hero h1 {
-            font-size: 40px;
-            margin-bottom: 10px;
+            font-family: var(--font-heading);
+            font-size: 52px; /* Larger heading */
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        #hero button {
-            margin-top: 20px;
-            padding: 10px 20px;
+        #hero p {
+            font-size: 20px;
+            max-width: 600px;
+            margin-bottom: 30px; /* More space before button */
+        }
+
+        .primary-button {
+            display: inline-block;
+            padding: 14px 30px;
             background-color: #fff;
             color: var(--accent-color);
             border: none;
-            border-radius: 5px;
-            font-size: 16px;
+            border-radius: 8px; /* Softer border-radius */
+            font-size: 18px;
+            font-weight: 700;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s;
+            transition: background-color 0.3s ease, transform 0.3s, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        #hero button:hover {
-            background-color: var(--button-hover-color);
-            transform: translateY(-3px);
+        .primary-button:hover {
+            background-color: var(--accent-light);
+            color: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
         }
 
         /* Sections */
         section {
-            padding: 60px 5%;
+            padding: 80px 0; /* More vertical padding */
             text-align: center;
         }
 
+        section h2 {
+            font-family: var(--font-heading);
+            font-size: 38px;
+            margin-bottom: 40px;
+            color: var(--primary-text-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -10px;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
         #portfolio {
-            background-color: #fff;
+            background-color: var(--section-bg-color);
         }
 
         .projects {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px; /* Increased gap */
+            padding: 0 20px; /* Ensure padding for smaller screens */
         }
 
         .project-card {
-            background-color: #f8f8f8;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: var(--main-bg-color);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); /* Stronger shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left; /* Align text left within card */
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
         }
 
         .project-card img {
             width: 100%;
+            height: 200px; /* Fixed height for consistent card size */
+            object-fit: cover; /* Ensures images fill the space without distortion */
             border-radius: 8px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #eee;
         }
 
-        #about {
-            background-color: #f4f4f9;
+        .project-card h3 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--accent-color);
         }
 
-        #contact {
-            background-color: #fff;
-        }
-
-        .contact-btn, .whatsapp-btn {
-            display: inline-block;
-            margin: 10px;
-            padding: 12px 20px;
-            color: #fff;
-            background-color: var(--accent-color);
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 16px;
-            transition: background-color 0.3s ease, transform 0.3s;
-        }
-
-        .contact-btn:hover, .whatsapp-btn:hover {
-            background-color: var(--button-hover-color);
-            transform: translateY(-3px);
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #fff;
-            border-top: 1px solid #ddd;
-            color: var(--secondary-color);
-        }
-
-        .social-links a {
-            margin: 0 10px;
-            font-size: 16px;
-            color: var(--secondary-color);
+        .project-card h3 a {
             transition: color 0.3s ease;
         }
 
+        .project-card h3 a:hover {
+            color: var(--accent-light);
+            text-decoration: underline;
+        }
+
+        .project-card p {
+            font-size: 16px;
+            color: var(--secondary-text-color);
+            line-height: 1.6;
+        }
+
+        #about {
+            background-color: var(--main-bg-color);
+        }
+
+        #about p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--primary-text-color);
+        }
+
+        #contact {
+            background-color: var(--section-bg-color);
+        }
+
+        #contact p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: var(--primary-text-color);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Space between buttons */
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+
+        .contact-btn, .whatsapp-btn {
+            display: inline-flex; /* Use flex for icon and text alignment */
+            align-items: center;
+            gap: 8px; /* Space between icon and text */
+            padding: 14px 28px;
+            color: #fff;
+            background-color: var(--accent-color);
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-btn:hover, .whatsapp-btn:hover {
+            background-color: var(--accent-light);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--primary-text-color); /* Darker footer */
+            color: #f8f8fc; /* Light text on dark background */
+            border-top: 1px solid #444;
+            font-size: 15px;
+        }
+
+        .social-links a {
+            margin: 0 15px;
+            font-size: 24px; /* Larger social icons */
+            color: #f8f8fc;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
         .social-links a:hover {
-            color: var(--accent-color);
+            color: var(--accent-light);
+            transform: translateY(-3px);
+        }
+
+        .social-links {
+            margin-bottom: 20px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px 5%;
+            }
+
+            .logo {
+                margin-bottom: 15px;
+            }
+
+            nav a {
+                margin: 0 10px;
+                font-size: 15px;
+            }
+
+            #hero h1 {
+                font-size: 42px;
+            }
+
+            #hero p {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            section h2 {
+                font-size: 32px;
+            }
+
+            .projects {
+                grid-template-columns: 1fr; /* Stack projects on small screens */
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .contact-btn, .whatsapp-btn {
+                width: 80%; /* Make buttons wider on small screens */
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #hero h1 {
+                font-size: 34px;
+            }
+
+            #hero p {
+                font-size: 16px;
+            }
+
+            #hero img {
+                width: 140px;
+                height: 140px;
+            }
+
+            .primary-button {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+
+            section h2 {
+                font-size: 28px;
+            }
         }
     </style>
 </head>
@@ -194,49 +409,71 @@
     </header>
 
     <section id="hero">
-        <img src="./abdala.png" alt="Abdullahi's Profile Picture">
+        <img src="https://via.placeholder.com/180/ADD8E6/000000?text=Abdullahi" alt="Abdullahi's Profile Picture">
         <h1>Hi, I'm Abdullahi</h1>
-        <p>Frontend Developer passionate about creating functional and visually appealing websites.</p>
-        <button>HIRE ME</button>
+        <p>A passionate **Frontend Developer** dedicated to building beautiful, functional, and user-friendly web experiences.</p>
+        <a href="#contact" class="primary-button">HIRE ME</a>
     </section>
 
     <section id="portfolio">
-        <h2>Portfolio</h2>
-        <div class="projects">
-            <div class="project-card">
-                <img src="./project1.png" alt="Curuba Hotel Project">
-                <h3><a href="https://abdulkany.github.io/Curubahotel/">Curuba Hotel</a></h3>
-                <p>A responsive website for a luxury restaurant.</p>
-            </div>
-            <div class="project-card">
-                <img src="./Portfolio website.png" alt="Portfolio Website Project">
-                <h3>Portfolio Website</h3>
-                <p>A modern personal portfolio website to showcase my skills.</p>
+        <div class="container">
+            <h2>My Portfolio</h2>
+            <div class="projects">
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x200/ADD8E6/000000?text=Curuba+Hotel" alt="Curuba Hotel Project">
+                    <h3><a href="https://abdulkany.github.io/Curubahotel/" target="_blank">Curuba Hotel Website</a></h3>
+                    <p>A fully responsive website designed for a luxury hotel, featuring elegant design and seamless booking integration. Built with HTML, CSS, and JavaScript.</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x200/ADD8E6/000000?text=Personal+Portfolio" alt="Portfolio Website Project">
+                    <h3>Personal Portfolio Site</h3>
+                    <p>A modern and interactive personal portfolio to showcase my skills, projects, and professional journey. Emphasizes clean design and user experience.</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x200/ADD8E6/000000?text=Project+3" alt="Project 3">
+                    <h3><a href="#" target="_blank">Project Title 3</a></h3>
+                    <p>Brief description of your third project, highlighting technologies used and your role in its development.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="about">
-        <h2>About Me</h2>
-        <p>I am a frontend developer who loves turning ideas into reality using modern web technologies. Let's create something amazing together!</p>
+        <div class="container">
+            <h2>About Me</h2>
+            <p>
+                I am a dedicated and enthusiastic Frontend Developer with a keen eye for detail and a passion for crafting engaging user interfaces. My journey in web development began with a fascination for how design meets functionality on the internet. I thrive on translating creative visions into pixel-perfect, responsive, and accessible websites.
+                <br><br>
+                With a solid foundation in **HTML5, CSS3, and JavaScript**, I enjoy tackling challenges and continuously learning new technologies to stay at the forefront of web development trends. I believe in writing clean, efficient, and maintainable code, and I'm always looking for opportunities to collaborate on innovative projects that make a real impact. Let's build something amazing together!
+            </p>
+        </div>
     </section>
 
     <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Feel free to get in touch for collaborations or inquiries.</p>
-        <a href="mailto:abdullahikanyare004@gmail.com" class="contact-btn">Email Me</a>
-        <a href="https://wa.me/254726970247" target="_blank" class="whatsapp-btn">WhatsApp Me</a>
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <p>I'm always open to new opportunities, collaborations, or just a friendly chat. Feel free to reach out!</p>
+            <div class="contact-links">
+                <a href="mailto:abdullahikanyare004@gmail.com" class="contact-btn">
+                    <i class="fas fa-envelope"></i> Email Me
+                </a>
+                <a href="https://wa.me/254726970247" target="_blank" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Me
+                </a>
+            </div>
+        </div>
     </section>
 
     <footer>
-        <div class="social-links">
-            <a href="https://twitter.com/abdullahi">Twitter</a>
-            <a href="https://linkedin.com/in/abdullahi">LinkedIn</a>
-            <a href="https://github.com/abdullahi">GitHub</a>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://twitter.com/abdullahi" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://linkedin.com/in/abdullahi" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/abdullahi" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            <p>&copy; 2024 Abdullahi. All rights reserved.</p>
         </div>
-        <p>&copy; 2024 Abdullahi. All rights reserved.</p>
     </footer>
 
 </body>
 </html>
-
